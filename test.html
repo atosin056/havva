@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swipe Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-slide {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 40px;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+
+        .form-slide.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .form-slide.left-out {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .next-btn, .prev-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .prev-btn {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Slide 1 -->
+    <div class="form-slide active" id="slide-1">
+        <div class="input-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Email">
+        </div>
+        <div class="input-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password">
+        </div>
+        <button class="next-btn" data-next="slide-2">Next</button>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="form-slide" id="slide-2">
+        <div class="input-group">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" placeholder="First Name">
+        </div>
+        <div class="input-group">
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Last Name">
+        </div>
+        <button class="prev-btn" data-prev="slide-1">Back</button>
+        <button class="next-btn" data-next="slide-3">Next</button>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="form-slide" id="slide-3">
+        <div class="input-group">
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password">
+        </div>
+        <button class="prev-btn" data-prev="slide-2">Back</button>
+        <button class="next-btn">Submit</button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Handle next button clicks
+        $(".next-btn").on("click", function () {
+            var currentSlide = $(this).closest(".form-slide");
+            var nextSlideId = $(this).data("next");
+
+            if (nextSlideId) {
+                currentSlide.removeClass("active").addClass("left-out");
+                $("#" + nextSlideId).removeClass("left-out").addClass("active");
+            }
+        });
+
+        // Handle previous button clicks
+        $(".prev-btn").on("click", function () {
+            var currentSlide = $(this).closest(".form-slide");
+            var prevSlideId = $(this).data("prev");
+
+            currentSlide.removeClass("active");
+            $("#" + prevSlideId).removeClass("left-out").addClass("active");
+        });
+    });
+</script>
+
+</body>
+</html>
