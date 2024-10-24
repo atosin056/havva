@@ -3,66 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Circular Progress Bar</title>
-    <script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>
+    <title>Page Toggle Example</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            width: 80%;
+            text-align: center;
+        }
+        .content.active {
+            display: block;
+        }
+        .navbar {
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f9f9f9;
-            font-family: Arial, sans-serif;
-        }
-
-        #container {
             position: relative;
-            width: 150px;
-            height: 150px;
         }
-
-        .progress-text {
+        .navbar button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #ddd;
+            border: none;
+            cursor: pointer;
+        }
+        .navbar button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .active-indicator {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1.2em;
-            font-weight: bold;
-            color: black;
+            bottom: 0;
+            width: 50px;
+            height: 5px;
+            background-color: #4CAF50;
+            transition: left 0.3s;
         }
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <button data-target="homeContent" class="nav-item active">Home</button>
+        <button data-target="chatContent" class="nav-item">Chat</button>
+        <button data-target="profileContent" class="nav-item">Profile</button>
+        <div class="active-indicator" id="indicator" style="left: 0px;"></div>
+    </div>
 
-<div id="container">
-    <div class="progress-text">8hrs 30mins</div>
-</div>
+    <div id="homeContent" class="content active">
+        <h2>Home Content</h2>
+        <p>This is the home content. Click on another tab to switch content.</p>
+    </div>
 
-<script>
-    var circle = new ProgressBar.Circle('#container', {
-        color: '#0f0',
-        strokeWidth: 10,
-        trailWidth: 5,
-        trailColor: '#ddd',
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-            autoStyleContainer: false
-        },
-        from: { color: '#0f0', width: 5 },
-        to: { color: '#00f', width: 10 },
-        step: function(state, circle) {
-            circle.path.setAttribute('stroke', state.color);
-            circle.path.setAttribute('stroke-width', state.width);
-        }
-    });
+    <div id="chatContent" class="content">
+        <h2>Chat Content</h2>
+        <p>This is the chat content. Click on another tab to switch content.</p>
+    </div>
 
-    circle.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-    circle.text.style.fontSize = '1.2rem';
+    <div id="profileContent" class="content">
+        <h2>Profile Content</h2>
+        <p>This is the profile content. Click on another tab to switch content.</p>
+    </div>
 
-    // Animate the circle to show 240 minutes (8 hours 30 mins) as 240 degrees
-    circle.animate(240 / 360);  // Fill up to 240 degrees (which is 240/360 of the circle)
-</script>
+    <script>
+        const buttons = document.querySelectorAll('.nav-item');
+        const contents = document.querySelectorAll('.content');
+        const indicator = document.getElementById('indicator');
 
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                buttons.forEach(btn => btn.classList.remove('active'));
+                contents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                const target = document.getElementById(button.getAttribute('data-target'));
+                target.classList.add('active');
+
+                // Move the indicator to the clicked button
+                const buttonOffset = button.offsetLeft;
+                const buttonWidth = button.offsetWidth;
+                indicator.style.width = `${buttonWidth}px`;
+                indicator.style.left = `${buttonOffset}px`;
+            });
+        });
+
+        // Initially set the indicator's width and position
+        window.onload = () => {
+            const activeButton = document.querySelector('.nav-item.active');
+            const buttonWidth = activeButton.offsetWidth;
+            const buttonOffset = activeButton.offsetLeft;
+            indicator.style.width = `${buttonWidth}px`;
+            indicator.style.left = `${buttonOffset}px`;
+        };
+    </script>
 </body>
 </html>

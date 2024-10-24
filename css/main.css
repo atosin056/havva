@@ -58,6 +58,7 @@ padding: 16px 16px 16px 24px;
 flex: 1 1 calc(33.333% - 20px);
 }
 .act{
+	cursor: pointer;
 	display: flex;
 padding: 25px;
 justify-content: center;
@@ -149,7 +150,7 @@ border: 1px solid var(--neutral-5, rgba(116, 116, 128, 0.18));
 background: rgba(221, 221, 221, 0.40);
 backdrop-filter: blur(20px);
 position: fixed;
-bottom: 60px; /* Adjusted from 'bottom: 1;' */
+bottom: 30px; /* Adjusted from 'bottom: 1;' */
 left: 50%;
 transform: translateX(-50%);
 margin-bottom: 0; /* Removed margin-bottom */
@@ -655,6 +656,12 @@ a{
 #main-content {
     opacity: 0; /* Start hidden */
     transition: opacity 2s ease;
+}
+.content {
+    display: none;
+}
+.content.acti {
+    display: block;
 }
 @media (max-width: 1200px) {
 	
