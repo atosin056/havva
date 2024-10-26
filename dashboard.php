@@ -203,13 +203,15 @@
 
 								</div>
 
-								<div class="col-lg-5 col-sm-5 col-md-5 heart">
+								<!-- End for 1 -->
+
+								<div class="col-lg-5 col-sm-5 col-md-5 heart" style="background: #EAFAEE;">
 
 									<div class="row">
 
 										<div class="img-cont">
 
-											<img src="images/heart.png">
+											<img src="images/moonn.png">
 
 										</div>
 
@@ -226,6 +228,68 @@
 										<div style="display: flex;align-items: center;gap: 10px;">
 
 											<font class="big-t">72</font><font class="small-t">BPM</font>
+
+										</div>
+
+									</div>
+
+								</div>
+
+								<div class="col-lg-5 col-sm-5 col-md-5 heart" style="background: #EAFAEE;">
+
+									<div class="row">
+
+										<div class="img-cont">
+
+											<img src="images/tempa.png">
+
+										</div>
+
+										<div style="display: inline-block;width: auto;display: flex;align-items: center;justify-content: flex-end;flex-grow: 1;">
+
+											<font style="color: var(--primary-blue, #28A745);">21/06/24</font>
+
+										</div>
+
+									</div>
+
+									<div style="flex-grow: 1;background: transparent;display: flex;align-items: flex-end;">
+
+										<div style="display: flex;align-items: center;gap: 10px;">
+
+											<font class="big-t">36.6</font><font class="small-t">°C</font>
+
+										</div>
+
+									</div>
+
+								</div>
+
+								<!-- End for 2 -->
+
+								<div class="col-lg-6 col-sm-6 col-md-6 heart" style="background: #E5F2FF;">
+
+									<div class="row">
+
+										<div class="img-cont">
+
+											<img src="images/bp.png">
+
+										</div>
+
+										<div style="display: inline-block;width: auto;display: flex;align-items: center;justify-content: flex-end;flex-grow: 1;">
+
+											<font style="color: var(--primary-blue, #007BFF);">21/06/24</font>
+
+										</div>
+
+									</div>
+
+									<div style="flex-grow: 1;background: transparent;display: flex;align-items: flex-end;">
+
+										<div style="display: flex;align-items: center;gap: 10px;">
+
+											<font class="big-t" style="font-size: 75px;">120/80</font><font class="small-t">mmHg</font>
 
 										</div>
 
