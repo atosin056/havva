@@ -167,13 +167,13 @@
 
 				<div style="background: transparent;padding-left: 30px;" class="col-lg-7 col-sm-7 col-md-7">
 					
-					<div>
+					<div style="background: transparent;">
 						
-						<div>
+						<div style="background: transparent;">
 							
-							<div class="row" style="align-items: center;">
+							<div class="row" style="justify-content: flex-end;align-items: center;gap: 20px;">
 								
-								<div class="col-lg-7 col-sm-7 col-md-7 heart">
+								<div class="col-lg-6 col-sm-6 col-md-6 heart">
 									
 									<div class="row">
 										
@@ -203,6 +203,36 @@
 
 								</div>
 
+								<div class="col-lg-5 col-sm-5 col-md-5 heart">
+
+									<div class="row">
+
+										<div class="img-cont">
+
+											<img src="images/heart.png">
+
+										</div>
+
+										<div style="display: inline-block;width: auto;display: flex;align-items: center;justify-content: flex-end;flex-grow: 1;">
+
+											<font style="color: var(--primary-blue, #007BFF);">21/06/24</font>
+
+										</div>
+
+									</div>
+
+									<div style="flex-grow: 1;background: transparent;display: flex;align-items: flex-end;">
+
+										<div style="display: flex;align-items: center;gap: 10px;">
+
+											<font class="big-t">72</font><font class="small-t">BPM</font>
+
+										</div>
+
+									</div>
+
+								</div>
+
 							</div>
 
 						</div>
@@ -215,9 +245,60 @@
 
 		</div>
 
-		<div class="content" id="robot">Dirty whine</div>
+		<div class="content" id="robot">
+			
+			<div clas="robo-cont" style="background-color: transparent;width: 100% !important;height: 100vh !important;">
 
-		<!-- End -->
+				<div style="width: 100% !important;height: 100% !important">
+
+					<div style="background: transparent;width: 100% !important;height: 100% !important;">
+
+						<div>
+
+							
+							
+						</div>
+	
+						<div class="row" style="justify-content: center;align-items: center;gap: 30px !important;height: 100% !important;">
+
+							<!-- <h4 style="font-family: poppins;font-size: 40px;line-height: 60px;">Hi there 👋 How can i assist you Today!</h4>
+							 -->
+
+							<div class="col-sm-3 col-md-3 col-lg-3 chat-card" style="border: 1px solid #e8e8e8;border-radius: 10px;padding: 20px;background: white;">
+
+								Tosin
+								
+							</div>
+
+							<!-- End -->
+
+							<div class="col-sm-3 col-md-3 col-lg-3 chat-card" style="border: 1px solid #e8e8e8;border-radius: 10px;padding: 20px;background: white;">
+
+								Tosin
+
+							</div>
+
+							<!-- end -->
+							
+							<div class="col-sm-3 col-md-3 col-lg-3 chat-card" style="border: 1px solid #e8e8e8;border-radius: 10px;padding: 20px;background: white;">
+
+								Tosin
+
+							</div>
+
+							<!-- end -->
+							
+						</div>					
+						
+					</div>
+					
+				</div>
+				
+			</div>
+		
+		</div>
+
+		<!-- End of content for the CHATBOT -->
 
 		<div style="margin-top: 40px;">
 			
