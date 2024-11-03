@@ -1,110 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Toggle Example</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .content {
-            display: none;
-            padding: 20px;
-            border: 1px solid #ddd;
-            width: 80%;
-            text-align: center;
-        }
-        .content.active {
-            display: block;
-        }
-        .navbar {
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-        .navbar button {
-            padding: 10px 20px;
-            margin: 0 5px;
-            background-color: #ddd;
-            border: none;
-            cursor: pointer;
-        }
-        .navbar button.active {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .active-indicator {
-            position: absolute;
-            bottom: 0;
-            width: 50px;
-            height: 5px;
-            background-color: #4CAF50;
-            transition: left 0.3s;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customizable Time-Based Progress Circle</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .chart-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f8f5;
+    }
+    #progressText {
+      position: absolute;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div class="navbar">
-        <button data-target="homeContent" class="nav-item active">Home</button>
-        <button data-target="chatContent" class="nav-item">Chat</button>
-        <button data-target="profileContent" class="nav-item">Profile</button>
-        <div class="active-indicator" id="indicator" style="left: 0px;"></div>
-    </div>
+  <div class="chart-container">
+    <canvas id="progressChart" width="200" height="200"></canvas>
+    <div id="progressText">Loading...</div>
+  </div>
 
-    <div id="homeContent" class="content active">
-        <h2>Home Content</h2>
-        <p>This is the home content. Click on another tab to switch content.</p>
-    </div>
+  <script>
+    // Replace with your PHP variable to dynamically set the time
+    const timeInput = "<?php echo $time; ?>"; // For example, $time = "8hrs 30mins";
 
-    <div id="chatContent" class="content">
-        <h2>Chat Content</h2>
-        <p>This is the chat content. Click on another tab to switch content.</p>
-    </div>
+    // Set up initial chart
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    const progressChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [0, 100], // Initial: 0% progress
+          backgroundColor: ['#28a745', '#e0e0e0'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        rotation: -90,
+        circumference: 270,
+        cutout: '75%',
+        plugins: { tooltip: { enabled: false } }
+      }
+    });
 
-    <div id="profileContent" class="content">
-        <h2>Profile Content</h2>
-        <p>This is the profile content. Click on another tab to switch content.</p>
-    </div>
+    // Function to update progress based on timeInput
+    function updateProgress() {
+      const totalMinutes = parseTimeInput(timeInput);
+      const maxMinutes = 24 * 60; // 24 hours in minutes
+      const percentage = (totalMinutes / maxMinutes) * 100;
 
-    <script>
-        const buttons = document.querySelectorAll('.nav-item');
-        const contents = document.querySelectorAll('.content');
-        const indicator = document.getElementById('indicator');
+      // Update the chart data
+      progressChart.data.datasets[0].data = [percentage, 100 - percentage];
+      progressChart.update();
 
-        buttons.forEach((button, index) => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
-                buttons.forEach(btn => btn.classList.remove('active'));
-                contents.forEach(content => content.classList.remove('active'));
+      // Update the text inside the chart
+      document.getElementById('progressText').innerText = timeInput || "No Time Provided";
+    }
 
-                // Add active class to clicked button and corresponding content
-                button.classList.add('active');
-                const target = document.getElementById(button.getAttribute('data-target'));
-                target.classList.add('active');
+    // Helper function to parse time input
+    function parseTimeInput(input) {
+      let hours = 0, minutes = 0;
+      const hourMatch = input.match(/(\d+)\s*hrs?/i);
+      const minuteMatch = input.match(/(\d+)\s*mins?/i);
 
-                // Move the indicator to the clicked button
-                const buttonOffset = button.offsetLeft;
-                const buttonWidth = button.offsetWidth;
-                indicator.style.width = `${buttonWidth}px`;
-                indicator.style.left = `${buttonOffset}px`;
-            });
-        });
+      if (hourMatch) hours = parseInt(hourMatch[1]);
+      if (minuteMatch) minutes = parseInt(minuteMatch[1]);
 
-        // Initially set the indicator's width and position
-        window.onload = () => {
-            const activeButton = document.querySelector('.nav-item.active');
-            const buttonWidth = activeButton.offsetWidth;
-            const buttonOffset = activeButton.offsetLeft;
-            indicator.style.width = `${buttonWidth}px`;
-            indicator.style.left = `${buttonOffset}px`;
-        };
-    </script>
+      return hours * 60 + minutes;
+    }
+
+    // Call updateProgress on page load
+    updateProgress();
+  </script>
 </body>
 </html>

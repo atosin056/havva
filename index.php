@@ -14,7 +14,7 @@
 	
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-	<link rel="icon" type="image/png" href="images/greenlogo.png">
+	<link rel="icon" type="image/png" href="images/greenlogo.webp">
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
@@ -30,7 +30,7 @@
 	
 		<!-- <div>
 			
-			<img src="images/greenlogo.png" style="width: 100px;">
+			<img src="images/greenlogo.webp" style="width: 100px;">
 
 		</div> -->
 
@@ -84,7 +84,7 @@
 
 				<div style="margin-top: 70px;">
 					
-					<img src="images/sleep.png" style="width: 100% !!important;">
+					<img src="images/sleep.webp" style="width: 100% !!important;">
 
 				</div>
 
@@ -96,7 +96,7 @@
 					
 					<div>
 						
-						<img src="images/pulse.png" style="width: 100% !important;">
+						<img src="images/pulse.webp" style="width: 100% !important;">
 
 					</div>
 
@@ -104,13 +104,13 @@
 						
 						<div>
 							
-							<img src="images/temp.png" style="flex: 1 1 calc(33.333% - 20px);">
+							<img src="images/temp.webp" style="flex: 1 1 calc(33.333% - 20px);">
 
 						</div>
 
 						<div style="flex-grow: 1;">
 							
-							<img src="images/pressure.png" style="flex: 1 1 calc(33.333% - 20px);width: 100% !important;height: 100% !important;">
+							<img src="images/pressure.webp" style="flex: 1 1 calc(33.333% - 20px);width: 100% !important;height: 100% !important;">
 
 						</div>
 
@@ -152,7 +152,7 @@
 						
 						<div>
 							
-							<img src="images/diagnostics.png" style="width: 100% !important;">
+							<img src="images/diagnostics.webp" style="width: 100% !important;">
 
 						</div>
 
@@ -170,7 +170,7 @@
 						
 						<div>
 							
-							<img src="images/diagnostics.png" style="width: 100% !important;">
+							<img src="images/diagnostics.webp" style="width: 100% !important;">
 
 						</div>
 
@@ -188,7 +188,7 @@
 						
 						<div>
 							
-							<img src="images/diagnostics.png" style="width: 100% !important;">
+							<img src="images/diagnostics.webp" style="width: 100% !important;">
 
 						</div>
 
@@ -206,7 +206,7 @@
 						
 						<div>
 							
-							<img src="images/diagnostics.png" style="width: 100% !important;">
+							<img src="images/diagnostics.webp" style="width: 100% !important;">
 
 						</div>
 
@@ -240,7 +240,7 @@
 				
 				<div class="overview">
 					
-					<img src="images/3d.png">
+					<img src="images/3d.webp">
 
 				</div>
 
@@ -366,7 +366,7 @@
 				
 				<div>
 					
-					<img src="images/mesh1.png" style="width: 100% !important;">
+					<img src="images/mesh1.webp" style="width: 100% !important;">
 
 				</div>
 
@@ -394,7 +394,7 @@
 				
 				<div>
 					
-					<img src="images/mesh2.png" style="width: 100% !important;height: 85% !important;">
+					<img src="images/mesh2.webp" style="width: 100% !important;height: 85% !important;">
 
 				</div>
 
@@ -422,7 +422,7 @@
 				
 				<div>
 					
-					<img src="images/mesh3.png" style="width: 100% !important;">
+					<img src="images/mesh3.webp" style="width: 100% !important;">
 
 				</div>
 
@@ -565,7 +565,7 @@
 
 			<div class="col-lg-7 col-md-7 col-sm-7" style="display: flex;justify-content: flex-end;">
 				
-				<img src="images/phone.png" style="width: 100% !important;">
+				<img src="images/phone.webp" style="width: 100% !important;">
 
 			</div>
 
@@ -604,7 +604,7 @@
 							
 							<div>
 								
-								<img src="images/icon.png">
+								<img src="images/icon.webp">
 
 							</div>
 
@@ -658,7 +658,7 @@
 
 									<div>
 										
-										<ul style="list-style-image: url('images/check.png');padding-top: 20px;font-weight: 500;">
+										<ul style="list-style-image: url('images/check.webp');padding-top: 20px;font-weight: 500;">
                                 
 			                                <li class="list">All analytics features</li>
 
@@ -694,7 +694,7 @@
 	
 	<div>
 		
-		<div style="background: url('images/big.png');" style="padding: 40px !important;">
+		<div style="background: url('images/big.webp');" style="padding: 40px !important;">
 			
 			<div class="row">
 				
@@ -732,7 +732,130 @@
 
 				<div class="col-lg-6 col-sm-6 col-md-6 deep">
 					
-					<img src="images/diamonds.png" style="width: 100% !important;height: 100% !important;">
+					<img src="images/diamonds.webp" style="width: 100% !important;height: 100% !important;">
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="footer">
+	
+	<div class="row" style="gap: 65px;">
+		
+		<div class="col-lg-6 col-sm-6 col-md-6 footnote">
+			
+			<div class="row" style="width: 100% !important;background: transparent;">
+				
+				<div style="display: inline-block;width: auto;background: transparent;">
+					
+					<img src="images/foot.webp">
+
+				</div>
+
+				<div style="width: auto;display: inline-flex;background: transparent;flex-direction: column;gap: 5px;align-items: center;justify-content: center;">
+					
+					<div style="width: 204px;">
+						
+						<img src="images/applestore.webp" style="width: 100% !important;">
+
+					</div>
+
+					<div style="width: 204px;">
+						
+						<img src="images/playstore.webp" style="width: 100% !important;">
+
+					</div>
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- End -->
+
+		<div class="col-lg-5 col-sm-5 col-md-5"> 
+			
+			<div>
+				
+				<div class="row" style="background: transparent;gap: 80px;">
+					
+					<ul class="foot-list">
+						
+						<li class="foot-item"><a href="#" class="foot-link">Help</a></li>
+
+						<li class="foot-item"><a href="#" class="foot-link">FAQ</a></li>
+
+						<li class="foot-item"><a href="#" class="foot-link">Terms Of Use</a></li>
+
+						<li class="foot-item"><a href="#" class="foot-link">Privacy Policy</a></li>
+
+						<li class="foot-item"><a href="#" class="foot-link">System status</a></li>
+
+					</ul>
+
+					<!-- End of list 1 -->
+
+					<ul class="foot-list">
+						
+						<li class="foot-item"><a href="#" class="foot-link">Instagram</a></li>
+
+						<li class="foot-item"><a href="#" class="foot-link">Twitter</a></li>
+
+						<li class="foot-item"><a href="#" class="foot-link">Facebook</a></li>
+
+						<li class="foot-item"><a href="#" class="foot-link">LinkedIn</a></li>
+
+						<li class="foot-item"><a href="#" class="foot-link">Github</a></li>
+
+					</ul>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="addon"> 
+	 
+	<div style="width: 100% !important;">
+		
+		<div style="width: 100% !important">
+			
+			<div style="width: 100% !important;">
+				
+				<div class="row" style="width: 100% !important;background: transparent;">
+					
+					<ul class="addon-list"> 
+						
+						<li class="addon-item"><a href="#" class="addon-link">Privacy Policy</a></li>
+
+						<li class="addon-item"><a href="#" class="addon-link">Terms of Use</a></li>
+
+						<li class="addon-item"><a href="#" class="addon-link">Legal</a></li>
+						
+						<li class="addon-item"><a href="#" class="addon-link">Abuse</a></li>
+
+						<li class="addon-item"><a href="#" class="addon-link">Sitemap</a></li>	
+
+					</ul>
+
+					<div style="display: inline-flex;width: 50%;justify-content: flex-end;color: white;">
+						
+						<font class="copyrights">&copy; Havva. All rights reserved</font>
+
+					</div>
 
 				</div>
 

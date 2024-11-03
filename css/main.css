@@ -125,6 +125,92 @@
 	opacity: 0.6;
 }
 
+a{
+	text-decoration: none;
+}
+
+.addon{
+	background: #3395FF;
+	display: flex;
+width: 100% !important;
+padding: 40px 120px;
+justify-content: space-between;
+align-items: center;
+}
+
+.footnote{
+	display: flex;
+padding: 24px 40px 24px 24px;
+align-items: center;
+gap: 24px;
+
+border-radius: 40px;
+background: #3395FF;
+}
+
+.addon-link{
+	color: #FFF;
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.addon-link:hover{
+	color: white;
+}
+
+.addon-item{
+	list-style-type: none;
+	display: inline-flex;
+}
+
+.addon-list{
+	width: 50% !important;
+}
+
+.addon-list li::before {
+  content: "|";           /* Use a pipe as the bullet */
+  margin-right: 8px;      /* Add some space between the bullet and text */
+  color: white;
+  display: inline-flex;  /* Make it bold, if preferred */
+}
+
+.foot-link{
+	color: #FFF;
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 40px;
+}
+
+.foot-list{
+	display: inline-block;
+	width: auto;
+}
+
+.foot-item{
+	list-style-type: none;
+	line-height: 30px;
+}
+
+.foot-link:hover{
+	color: white;
+}
+
+.footer{
+	padding: 64px 120px;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+background: var(--primary-blue, #007BFF);
+width: 100% !important;
+height: auto !important;
+color: white;
+}
+
 .message-input{
 	border-radius: 12px !important;
 border: 1px solid var(--neutral-5, rgba(116, 116, 128, 0.18)) !important;
@@ -135,6 +221,11 @@ padding-left: 20px;
 justify-content: flex-end;
 align-items: center;
 gap: 142px;
+background: var(--gradient, linear-gradient(141deg, #007BFF 14.56%, #28A745 84.62%)) !important;
+    -webkit-background-clip: text; /* For Safari */
+    background-clip: text; /* For other browsers */
+    color: transparent; /* Make the text color transparent */
+font-feature-settings: 'liga' off, 'clig' off;
 }
 
 .user{
@@ -165,6 +256,10 @@ gap: 142px;
 	display: none;
 }
 
+#progressText{
+	color: transparent;
+}
+
 .tomessage{
 	max-width: 50%;
 	background: #F3F2F7;
@@ -180,7 +275,10 @@ gap: 142px;
 }
 
 .message-input::placeholder{
-	color: #555;
+	 background: var(--gradient, linear-gradient(141deg, #007BFF 14.56%, #28A745 84.62%));
+    -webkit-background-clip: text; /* For Safari */
+    background-clip: text; /* For other browsers */
+    color: transparent; /* Make the text color transparent */
 font-feature-settings: 'liga' off, 'clig' off;
 
 /* caption/regular */
@@ -192,7 +290,10 @@ line-height: 150%; /* 18px */
 }
 
 .medic-bot{
-	color: #000;
+	 background: var(--gradient, linear-gradient(141deg, #007BFF 14.56%, #28A745 84.62%));
+    -webkit-background-clip: text; /* For Safari */
+    background-clip: text; /* For other browsers */
+    color: transparent; /* Make the text color transparent */
 font-feature-settings: 'liga' off, 'clig' off;
 
 /* Title3/regular */
@@ -204,7 +305,10 @@ line-height: normal;
 }
 
 .hi{
-	color: #000;
+	 background: var(--gradient, linear-gradient(141deg, #007BFF 14.56%, #28A745 84.62%));
+    -webkit-background-clip: text; /* For Safari */
+    background-clip: text; /* For other browsers */
+    color: transparent; /* Make the text color transparent */
 font-feature-settings: 'liga' off, 'clig' off;
 
 /* Title2/regular */

@@ -18,7 +18,7 @@
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-	<title>Havva - All your health care needs in one app with Havva | Register</title>
+	<title>Havva - All your health care needs in one app with Havva | Login</title>
 
 </head>
 
@@ -40,7 +40,7 @@
 
 				<div style="flex-grow: 1;display: flex;justify-content: flex-end;background: transparent;padding-right: 20px;">
 					
-					<font style="font-size: 14px;font-weight: 300;">Already have an account <a href="login.php" style="padding-left: 4px;text-decoration: none;color: #20DC49;font-weight: 500;">Sign in!</a></font>
+					<font style="font-size: 14px;font-weight: 300;">Don't have an account <a href="#" style="padding-left: 4px;text-decoration: none;color: #20DC49;font-weight: 500;">Sign up!</a></font>
 
 				</div>
 
@@ -73,14 +73,6 @@
 										<input required type="password" name="password" placeholder="Password" class="form-control fn" id="password" style="font-size: 14px;font-weight: 400;background: #F9F9F9;height: 64px;border-radius: 12px;padding-left: 20px;padding-top: 10px;border: 1px solid #BBBBBB;">
 
 										<label for="password" style="padding-top: 18px;padding-left: 20px;color: #555555;font-weight: 300 !important;">Password</label>
-
-									</div>
-
-									<div class="form-floating mb-3">
-										
-										<input required type="password" name="confpass" placeholder="Confirm Password" class="form-control fn" id="confpass" style="font-size: 14px;font-weight: 400;background: #F9F9F9;height: 64px;border-radius: 12px;padding-left: 20px;padding-top: 10px;border: 1px solid #BBBBBB;">
-
-										<label for="password" style="padding-top: 18px;padding-left: 20px;color: #555555;font-weight: 300 !important;">Confirm Password</label>
 
 									</div>
 

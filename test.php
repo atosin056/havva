@@ -1,102 +1,88 @@
+<?php
+// Set your time variable dynamically
+$time = "8hrs 30mins"; // Replace this with a variable or data from your database
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Video Search</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-            text-align: center;
-        }
-        input {
-            padding: 10px;
-            width: 300px;
-            margin-bottom: 10px;
-        }
-        button {
-            padding: 10px 15px;
-        }
-        #result {
-            margin-top: 20px;
-        }
-        .video-thumbnail {
-            cursor: pointer;
-            position: relative;
-            display: inline-block;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customizable Time-Based Progress Circle</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .chart-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f8f5;
+    }
+    #progressText {
+      position: absolute;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
+  <div class="chart-container">
+    <canvas id="progressChart" width="200" height="200"></canvas>
+    <div id="progressText">Loading...</div>
+  </div>
 
-    <h1>Search for the Best YouTube Video</h1>
-    <form method="POST">
-        <input type="text" name="query" placeholder="Enter your search prompt" required>
-        <button type="submit">Search</button>
-    </form>
+  <script>
+    // Replace with your PHP variable to dynamically set the time
+    const timeInput = "<?php echo $time; ?>"; // For example, $time = "8hrs 30mins";
 
-    <div id="result">
-        <?php
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $apiKey = 'AIzaSyBK-Elx7q7F4m0jctrG29hDsPnhtjaLIK0'; // Replace with your YouTube API key
-            $query = urlencode($_POST['query']);
+    // Set up initial chart
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    const progressChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [0, 100], // Initial: 0% progress
+          backgroundColor: ['#28a745', '#e0e0e0'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        rotation: -90,
+        circumference: 270,
+        cutout: '75%',
+        plugins: { tooltip: { enabled: false } }
+      }
+    });
 
-            // Search for videos
-            $searchUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&q={$query}&key={$apiKey}";
-            $searchResponse = file_get_contents($searchUrl);
-            $searchData = json_decode($searchResponse, true);
+    // Function to update progress based on timeInput
+    function updateProgress() {
+      const totalMinutes = parseTimeInput(timeInput);
+      const maxMinutes = 24 * 60; // 24 hours in minutes
+      const percentage = (totalMinutes / maxMinutes) * 100;
 
-            if (!empty($searchData['items'])) {
-                if (isset($searchData['items'][0]['id']['videoId'])) {
-        $videoId = $searchData['items'][0]['id']['videoId'];
-        // Proceed with your logic to get the video URL and statistics
-    } else {
-        $videoId = NULL;
+      // Update the chart data
+      progressChart.data.datasets[0].data = [percentage, 100 - percentage];
+      progressChart.update();
+
+      // Update the text inside the chart
+      document.getElementById('progressText').innerText = timeInput || "No Time Provided";
     }
 
+    // Helper function to parse time input
+    function parseTimeInput(input) {
+      let hours = 0, minutes = 0;
+      const hourMatch = input.match(/(\d+)\s*hrs?/i);
+      const minuteMatch = input.match(/(\d+)\s*mins?/i);
 
-                $videoUrl = "https://www.youtube.com/watch?v={$videoId}";
-                $embedUrl = "https://www.youtube.com/embed/{$videoId}?autoplay=1"; // Embed URL for iframe
-                $thumbnail = $searchData['items'][0]['snippet']['thumbnails']['high']['url']; // Thumbnail URL
-                $videoTitle = $searchData['items'][0]['snippet']['title'];
+      if (hourMatch) hours = parseInt(hourMatch[1]);
+      if (minuteMatch) minutes = parseInt(minuteMatch[1]);
 
-                echo "<div class='slide'>";
-                echo "<div class='video-thumbnail' data-video-link='{$embedUrl}'>";
-                echo "<img src='{$thumbnail}' alt='" . htmlspecialchars($videoTitle) . "' style='width: 250px; height: 214px;'>";
-                echo "<p style='font-family: montserrat; font-weight: 500; font-size: 17px; line-height: 24px; padding-top: 20px;'>" . htmlspecialchars($videoTitle) . "</p>";
-                echo "</div></div>";
-            } else {
-                echo "<p>No videos found for this query.</p>";
-            }
- 
+      return hours * 60 + minutes;
+    }
 
-        }
-        ?>
-    </div>
-
-    <script>
-        document.querySelectorAll('.video-thumbnail').forEach(function(thumbnail) {
-            thumbnail.addEventListener('click', function() {
-                var videoLink = this.getAttribute('data-video-link');
-
-                // Create iframe for the video
-                var iframe = document.createElement('iframe');
-                iframe.setAttribute('src', videoLink);
-                iframe.setAttribute('frameborder', '0');
-                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-                iframe.setAttribute('allowfullscreen', 'true');
-                
-                // Style the iframe
-                iframe.style.width = '250px';  // Customize width here
-                iframe.style.height = '214px'; // Customize height here
-                
-                // Clear the thumbnail content and append the iframe
-                this.innerHTML = ''; // Clear the thumbnail content
-                this.appendChild(iframe); // Insert the iframe
-            });
-        });
-    </script>
-
+    // Call updateProgress on page load
+    updateProgress();
+  </script>
 </body>
 </html>
+

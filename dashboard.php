@@ -1,3 +1,9 @@
+<?php
+// Set your time variable dynamically
+$time = "20hrs 30mins"; 
+// Replace this with a variable or data from your database
+
+?>
 <html>
 
 <head>
@@ -14,7 +20,11 @@
 	
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-	<link rel="icon" type="image/png" href="images/greenlogo.png">
+	<link rel="icon" type="image/png" href="images/greenlogo.webp">
+
+	<!-- Sleep Bar -->
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
@@ -42,9 +52,9 @@
 		
 		    <div style="display: flex;">
 		        
-		        <div class="act acti" data-target="home">
+		        <div class="act acti" data-target="home" title="Home">
 		
-		            <img src="images/House.png">
+		            <img src="images/House.webp">
 		
 		        </div>
 
@@ -55,21 +65,21 @@
 		        </div>
 
 		
-		        <div class="act" data-target="robot">
+		        <div class="act" data-target="robot" title="MedicBot">
 		
-		            <img src="images/robot.png">
+		            <img src="images/robot.webp">
 		
 		        </div>
 
 		        <div class="act" data-target="user">
 		
-		            <img src="images/user.png">
+		            <img src="images/user.webp">
 		
 		        </div>
 
 		        <div class="act" data-target="gear">
 		
-		            <img src="images/gear.png">
+		            <img src="images/gear.webp">
 		
 		        </div>  
 
@@ -113,7 +123,7 @@
 											
 											<div style="display: inline-block;width: auto;">
 												
-												<img src="images/dash.png">
+												<img src="images/dash.webp">
 
 											</div>
 
@@ -137,7 +147,7 @@
 											
 											<div style="display: inline-block;width: auto;">
 												
-												<img src="images/dash.png">
+												<img src="images/dash.webp">
 
 											</div>
 
@@ -179,7 +189,7 @@
 										
 										<div class="img-cont">
 											
-											<img src="images/heart.png">
+											<img src="images/heart.webp">
 
 										</div>
 
@@ -211,7 +221,7 @@
 
 										<div class="img-cont">
 
-											<img src="images/moonn.png">
+											<img src="images/moonn.webp">
 
 										</div>
 
@@ -225,11 +235,102 @@
 
 									<div style="flex-grow: 1;background: transparent;display: flex;align-items: flex-end;">
 
-										<div style="display: flex;align-items: center;gap: 10px;">
+										<div style="display: flex;align-items: center;gap: 10px;position: relative;">
 
-											<font class="big-t">72</font><font class="small-t">BPM</font>
+											<canvas id="progressChart" width="10" height="10"></canvas>
 
-										</div>
+											<div id="progressText">Loading...</div>
+
+											<script type="text/javascript"> 
+
+											const timeInput = "<?php echo $time; ?>"; // For example, $time = "8hrs 30mins";
+
+										    // Set up initial chart
+										   
+										    const ctx = document.getElementById('progressChart').getContext('2d');
+										   
+										    const progressChart = new Chart(ctx, {
+										   
+										      type: 'doughnut',
+										   
+										      data: {
+										   
+										        datasets: [{
+										   
+										          data: [0, 100], // Initial: 0% progress
+										   
+										          backgroundColor: ['#28A745', '#ADEBBB'],
+										   
+										          borderWidth: 0
+										   
+										        }]
+										   
+										      },
+										   
+										      options: {
+										   
+										        rotation: -90,
+										   
+										        circumference: 360,
+										   
+										        cutout: '75%',
+										   
+										        plugins: { tooltip: { enabled: false } }
+										   
+										      }
+										   
+										    });
+
+										    // Function to update progress based on timeInput
+										   
+										    function updateProgress() {
+										   
+										      const totalMinutes = parseTimeInput(timeInput);
+										   
+										      const maxMinutes = 24 * 60; // 24 hours in minutes
+										   
+										      const percentage = (totalMinutes / maxMinutes) * 100;
+
+
+
+										      // Update the chart data
+
+										      progressChart.data.datasets[0].data = [percentage, 100 - percentage];
+
+										      progressChart.update();
+
+										      // Update the text inside the chart
+
+										      document.getElementById('progressText').innerText = timeInput || "No Time Provided";
+
+										    }
+
+
+										    // Helper function to parse time input
+
+										    function parseTimeInput(input) {
+
+										      let hours = 0, minutes = 0;
+
+										      const hourMatch = input.match(/(\d+)\s*hrs?/i);
+
+										      const minuteMatch = input.match(/(\d+)\s*mins?/i);
+
+										      if (hourMatch) hours = parseInt(hourMatch[1]);
+
+										      if (minuteMatch) minutes = parseInt(minuteMatch[1]);
+
+										      return hours * 60 + minutes;
+
+										    }
+
+										    // Call updateProgress on page load
+
+										    updateProgress();
+
+										</script>
+
+									</div>
 
 									</div>
 
@@ -241,7 +342,7 @@
 
 										<div class="img-cont">
 
-											<img src="images/tempa.png">
+											<img src="images/tempa.webp">
 
 										</div>
 
@@ -273,7 +374,7 @@
 
 										<div class="img-cont">
 
-											<img src="images/bp.png">
+											<img src="images/bp.webp">
 
 										</div>
 
@@ -313,7 +414,7 @@
 			
 			<div clas="robo-cont" style="background-color: transparent;width: 100% !important;height: 100vh !important;">
 
-				<div style="width: 100% !important;height: 100% !important">
+				<div style="width: 100% !important;height: 100% !important;display: flex;flex-direction: column;gap: -5px;background: transparent;">
 
 					<div style="background: transparent;width: 100% !important;height: 100% !important;">
 
@@ -323,65 +424,100 @@
 								
 								<div>
 									
-									<img src="images/greenlogo.png">
+									<img src="images/greenlogo.webp">
 
 								</div>
 
 								<div style="display: inline-block;width: auto;">
 									
-									<h4 class="medic-bot">MedicBot</h4>
+									<h4 class="medic-bot"><font class="colored">Medic</font>Bot</h4>
 
 								</div>
 
 							</div>
 							
 						</div>
-	
-						<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; height: 100%;">
-					   
-						    <!-- The Welcome big text -->
-						   
-						    <div class="col-lg-7 col-sm-7 col-md-7" id="introMessage">
-						   
-						        <h4 class="hi typewriter-text">Hi there! Got any health questions or need guidance on a medical issue? I’m here to help!</h4>
-						   
-						    </div>
 
+							<div style="display: flex; flex-direction: column;padding-top: 150px; align-items: center; gap: 30px; height: 100%;background: transparent;width: 100% !important;">
 						   
-						    <!-- The real chat -->
-						   
-						    <div id="chatBody" style="width: 100%; background: transparent; height: 30%; overflow-y: auto; display: none;">
-						   
-						        <div style="background: transparent; width: 100%;" class="chat-body">
-						   
-						            <div id="messagesContainer" style="width: 100%;"></div> <!-- Container for all messages -->
-						   
-						        </div>
-						   
-						    </div>
+							    <!-- The Welcome big text -->
+							   
+							    <div class="col-lg-7 col-sm-7 col-md-7" id="introMessage" style="background: transparent;">
+							   
+							        <h4 class="hi typewriter-text">Hi there! Got any health questions or need guidance on a medical issue? I’m here to help!</h4>
 
-						    <div style="background: transparent; justify-self: flex-end; width: 100%;">
-						   
-						        <form method="POST" id="messageForm" style="background: transparent;">
-						   
-						            <div style="position: relative;">
-						   
-						                <input type="text" required name="message" class="form-control message-input" placeholder="Message" style="padding-right: 40px;">
-						   
-						                <button type="submit" name="submit" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none;">
-						   
-						                    <img src="images/send.png" alt="Send" style="width: 40px; height: 40px;">
-						   
-						                </button>
-						   
-						            </div>
-						   
-						        </form>
-						   
-						    </div>
+							        <div style="display: flex;width: 100% !important;margin-top: 15px;">
+									
+										<div class="row" style="padding-left: 0 !important;flex-wrap: nowrap;gap: 12px;">
+											
+											<div style="display: inline-block;width: auto;padding: 0 !important;">
+												
+												<img src="images/cut.webp">
 
-							<!-- end -->
+											</div>
 
+											<div style="display: inline-block;width: auto;padding: 0 !important;">
+												
+												<img src="images/dizzy.webp">
+
+											</div>
+
+											<div style="display: inline-block;width: auto;padding: 0 !important;">
+												
+												<img src="images/head.webp">
+
+											</div>
+
+											<div style="display: inline-block;width: auto;padding: 0 !important;">
+												
+												<img src="images/anxious.webp">
+
+											</div>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							    <!-- The real chat -->
+							   
+							    <div id="chatBody" style="width: 100%; background: transparent; height: 30%; overflow-y: auto; display: none;">
+							   
+							        <div style="background: transparent; width: 100%;" class="chat-body">
+							   
+							            <div id="messagesContainer" style="width: 100%;"></div> <!-- Container for all messages -->
+							   
+							        </div>
+							   
+							    </div>
+
+							    <!-- End -->
+
+							    <div style="background: transparent; justify-self: flex-end; width: 100%;background: transparent;">
+							   
+							        <form method="POST" id="messageForm" style="background: transparent;">
+							   
+							            <div style="position: relative;">
+							   
+							                <input type="text" required name="message" class="form-control message-input" placeholder="Message" style="padding-right: 40px;background: transparent !important;">
+							   
+							                <button type="submit" name="submit" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none;">
+							   
+							                    <img src="images/send.webp" alt="Send" style="width: 40px; height: 40px;">
+							   
+							                </button>
+							   
+							            </div>
+							   
+							        </form>
+							   
+							    </div>
+
+								<!-- end -->
+
+							</div>
+							
 						</div>
 						
 					</div>
@@ -394,7 +530,7 @@
 
 		<!-- End of content for the CHATBOT -->
 
-		<div style="margin-top: 40px;">
+		<div style="margin-top: 40px;padding-left: 120px;padding-right: 120px;">
 			
 			<div>
 				
@@ -420,7 +556,7 @@
 
 							<div style="display: inline-block;width: auto;">
 								
-								<img src="images/health.png">
+								<img src="images/health.webp">
 
 							</div>
 
@@ -450,7 +586,7 @@
 
 							<div style="display: inline-block;width: auto;">
 								
-								<img src="images/health.png">
+								<img src="images/health.webp">
 
 							</div>
 
@@ -480,7 +616,7 @@
 
 							<div style="display: inline-block;width: auto;">
 								
-								<img src="images/health.png">
+								<img src="images/health.webp">
 
 							</div>
 
@@ -522,6 +658,9 @@
         }, 100); // Wait for 2 seconds for the fade out to complete
     }, 1500); // 3 seconds before the fade-out starts
 });
+
+
+
 const navItems = document.querySelectorAll('.act');
 const contentSections = document.querySelectorAll('.content');
 
@@ -630,7 +769,7 @@ function typewriterEffect(element, speed = 60) {
 
 //         // Add user image
 //         const userImage = document.createElement('img');
-//         userImage.src = 'images/user.png';
+//         userImage.src = 'images/user.webp';
 //         userDiv.appendChild(userImage);
 
 //         // Create the .tomessage div
@@ -683,7 +822,7 @@ function typewriterEffect(element, speed = 60) {
 
 //             // Add bot image
 //             const botImage = document.createElement('img');
-//             botImage.src = 'images/robot.png';
+//             botImage.src = 'images/robot.webp';
 //             botUserDiv.appendChild(botImage);
 
 //             // Main container for bot message
@@ -747,7 +886,7 @@ document.getElementById('messageForm').addEventListener('submit', function(e) {
             userMessageDiv.innerHTML = `
                 <div class="to">
                     <div class="user" style="height: 54px;">
-                        <img src="images/user.png">
+                        <img src="images/user.webp">
                     </div>
                     <div class="tomessage">${messageInput}</div>
                 </div>
@@ -775,7 +914,7 @@ document.getElementById('messageForm').addEventListener('submit', function(e) {
                     aiMessageDiv.innerHTML = `
                         <div class="from">
                             <div class="user" style="height: 54px;">
-                                <img src="images/robot.png">
+                                <img src="images/robot.webp">
                             </div>
                             <div style="width: 100%; background: transparent;">
                                 <div id="iframeContainer" style="height: auto; width: 100%; background: transparent;">
