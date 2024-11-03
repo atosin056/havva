@@ -289,7 +289,7 @@
 
 										<div style="display: flex;align-items: center;gap: 10px;">
 
-											<font class="big-t" style="font-size: 75px;">120/80</font><font class="small-t">mmHg</font>
+											<font class="big-t" style="font-size: 50px;">120/80</font><font class="small-t">mmHg</font>
 
 										</div>
 
@@ -319,40 +319,70 @@
 
 						<div>
 
-							
+							<div style="display: flex;gap: 8px;">
+								
+								<div>
+									
+									<img src="images/greenlogo.png">
+
+								</div>
+
+								<div style="display: inline-block;width: auto;">
+									
+									<h4 class="medic-bot">MedicBot</h4>
+
+								</div>
+
+							</div>
 							
 						</div>
 	
-						<div class="row" style="justify-content: center;align-items: center;gap: 30px !important;height: 100% !important;">
+						<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; height: 100%;">
+					   
+						    <!-- The Welcome big text -->
+						   
+						    <div class="col-lg-7 col-sm-7 col-md-7" id="introMessage">
+						   
+						        <h4 class="hi typewriter-text">Hi there! Got any health questions or need guidance on a medical issue? I’m here to help!</h4>
+						   
+						    </div>
 
-							<!-- <h4 style="font-family: poppins;font-size: 40px;line-height: 60px;">Hi there 👋 How can i assist you Today!</h4>
-							 -->
+						   
+						    <!-- The real chat -->
+						   
+						    <div id="chatBody" style="width: 100%; background: transparent; height: 30%; overflow-y: auto; display: none;">
+						   
+						        <div style="background: transparent; width: 100%;" class="chat-body">
+						   
+						            <div id="messagesContainer" style="width: 100%;"></div> <!-- Container for all messages -->
+						   
+						        </div>
+						   
+						    </div>
 
-							<div class="col-sm-3 col-md-3 col-lg-3 chat-card" style="border: 1px solid #e8e8e8;border-radius: 10px;padding: 20px;background: white;">
-
-								Tosin
-								
-							</div>
-
-							<!-- End -->
-
-							<div class="col-sm-3 col-md-3 col-lg-3 chat-card" style="border: 1px solid #e8e8e8;border-radius: 10px;padding: 20px;background: white;">
-
-								Tosin
-
-							</div>
+						    <div style="background: transparent; justify-self: flex-end; width: 100%;">
+						   
+						        <form method="POST" id="messageForm" style="background: transparent;">
+						   
+						            <div style="position: relative;">
+						   
+						                <input type="text" required name="message" class="form-control message-input" placeholder="Message" style="padding-right: 40px;">
+						   
+						                <button type="submit" name="submit" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none;">
+						   
+						                    <img src="images/send.png" alt="Send" style="width: 40px; height: 40px;">
+						   
+						                </button>
+						   
+						            </div>
+						   
+						        </form>
+						   
+						    </div>
 
 							<!-- end -->
-							
-							<div class="col-sm-3 col-md-3 col-lg-3 chat-card" style="border: 1px solid #e8e8e8;border-radius: 10px;padding: 20px;background: white;">
 
-								Tosin
-
-							</div>
-
-							<!-- end -->
-							
-						</div>					
+						</div>
 						
 					</div>
 					
@@ -470,6 +500,8 @@
 
 </div>	
 
+</div>
+
 </body>
 
 <script>
@@ -538,6 +570,227 @@ window.onload = () => {
         }
     });
 };
+document.addEventListener('DOMContentLoaded', function () {
+    // Ensure there are no misplaced parentheses
+    const elements = document.querySelectorAll('.typewriter-text');
+    elements.forEach(element => {
+        // Always check that functions are invoked correctly
+        typewriterEffect(element, 60);
+    });
+});
+
+// Correct initialization for typewriter effect
+function typewriterEffect(element, speed = 60) {
+    const text = element.textContent;
+    element.textContent = ''; // Clear the text
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
+
+// const introMessage = document.getElementById('introMessage');
+// const chatBody = document.getElementById('chatBody');
+// const messageForm = document.getElementById('messageForm');
+
+// // Listen for the form submission
+// messageForm.addEventListener('submit', function(event) {
+//     event.preventDefault(); // Prevent the form from submitting
+
+//     // Hide the intro message and show the chat body
+//     introMessage.style.display = 'none';
+//     chatBody.style.display = 'block';
+
+//     // Get the user message from the input field
+//     const messageInput = document.querySelector('.message-input');
+//     const userMessage = messageInput.value;
+
+//     // Add user message to chat
+//     if (userMessage) {
+//         // Create a new outer div for the user message
+//         const messageContainer = document.createElement('div');
+//         messageContainer.style.width = '100%';
+//         messageContainer.style.display = 'flex';
+//         messageContainer.style.justifyContent = 'flex-end'; // Align to the right
+
+//         // Create the .to div for the user's message
+//         const toDiv = document.createElement('div');
+//         toDiv.classList.add('to');
+
+//         // Create the user div
+//         const userDiv = document.createElement('div');
+//         userDiv.classList.add('user');
+//         userDiv.style.height = '54px';
+
+//         // Add user image
+//         const userImage = document.createElement('img');
+//         userImage.src = 'images/user.png';
+//         userDiv.appendChild(userImage);
+
+//         // Create the .tomessage div
+//         const tomessageDiv = document.createElement('div');
+//         tomessageDiv.classList.add('tomessage');
+
+//         // Create a new div for the user's message
+//         const userMessageElement = document.createElement('div');
+//         userMessageElement.textContent = userMessage; // Set the message text
+//         userMessageElement.classList.add('user-message');
+
+//         // Append the user message to the tomessage div
+//         tomessageDiv.appendChild(userMessageElement);
+
+//         // Append tomessage div to the to div
+//         toDiv.appendChild(userDiv);
+//         toDiv.appendChild(tomessageDiv);
+
+//         // Append the entire message container to the chat body
+//         messageContainer.appendChild(toDiv);
+//         chatBody.appendChild(messageContainer);
+
+//         // Clear the input field after appending the message
+//         messageInput.value = '';
+
+//         // Now make an AJAX request to ai.php
+//         fetch('ai.php', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/x-www-form-urlencoded',
+//             },
+//             body: `message=${encodeURIComponent(userMessage)}`
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             // Create a new outer div for the bot's response
+//             const botResponseContainer = document.createElement('div');
+//             botResponseContainer.style.width = '100%';
+//             botResponseContainer.style.display = 'flex';
+//             botResponseContainer.style.justifyContent = 'flex-start'; // Align to the left
+
+//             // Create the .from div for the bot's response
+//             const fromDiv = document.createElement('div');
+//             fromDiv.classList.add('from');
+
+//             // Create the .user div for the bot
+//             const botUserDiv = document.createElement('div');
+//             botUserDiv.classList.add('user');
+//             botUserDiv.style.height = '54px';
+
+//             // Add bot image
+//             const botImage = document.createElement('img');
+//             botImage.src = 'images/robot.png';
+//             botUserDiv.appendChild(botImage);
+
+//             // Main container for bot message
+//             const botMessageContainer = document.createElement('div');
+//             botMessageContainer.style.width = '100%';
+
+//             // Final container where iframe will be inserted
+//             const iframeContainer = document.createElement('div');
+//             iframeContainer.style.width = '100%';
+//             iframeContainer.style.height = '50vh';
+
+//             if (data.videoUrl) {
+//                 // Extract video ID from the URL to create the iframe
+//                 const videoId = data.videoUrl.split('v=')[1];
+//                 const iframe = document.createElement('iframe');
+//                 iframe.width = '100%';
+//                 iframe.height = '100%';
+//                 iframe.src = `https://www.youtube.com/embed/${videoId}`;
+//                 iframe.frameBorder = '0';
+//                 iframe.allowFullscreen = true;
+
+//                 // Append the iframe to the bot's specified div
+//                 iframeContainer.appendChild(iframe);
+//             } else if (data.error) {
+//                 const errorMessage = document.createElement('div');
+//                 errorMessage.textContent = data.error; // Display the error
+//                 iframeContainer.appendChild(errorMessage);
+//             } else {
+//                 const defaultTextDiv = document.createElement('div');
+//                 defaultTextDiv.textContent = 'Havva AI'; // Set the default text
+//                 iframeContainer.appendChild(defaultTextDiv);
+//             }
+
+//             // Nest the containers
+//             botMessageContainer.appendChild(iframeContainer);
+//             fromDiv.appendChild(botUserDiv);
+//             fromDiv.appendChild(botMessageContainer);
+//             botResponseContainer.appendChild(fromDiv);
+//             chatBody.appendChild(botResponseContainer);
+//         })
+//         .catch(error => console.error("Fetch Error:", error));
+//     }
+// });
+
+document.getElementById('messageForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            const messageInput = this.message.value; // Get the message from input
+            const messagesContainer = document.getElementById('messagesContainer');
+
+            // Hide intro message and show chat body if not already done
+            if (document.getElementById('introMessage').style.display !== 'none') {
+                document.getElementById('introMessage').style.display = 'none';
+                document.getElementById('chatBody').style.display = 'block';
+            }
+
+            // Create a new message entry for the user's message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.style.display = 'flex';
+            userMessageDiv.style.justifyContent = 'flex-end';
+            userMessageDiv.innerHTML = `
+                <div class="to">
+                    <div class="user" style="height: 54px;">
+                        <img src="images/user.png">
+                    </div>
+                    <div class="tomessage">${messageInput}</div>
+                </div>
+            `;
+            messagesContainer.appendChild(userMessageDiv); // Add user's message to the chat
+
+            // Clear the input field
+            this.message.value = '';
+
+            // Send AJAX request to ai.php
+            fetch('ai.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'message=' + encodeURIComponent(messageInput) // Send the message
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.embedUrl) {
+                    // Create a new message entry for the AI response
+                    const aiMessageDiv = document.createElement('div');
+                    aiMessageDiv.style.display = 'flex';
+                    aiMessageDiv.style.justifyContent = 'flex-start';
+                    aiMessageDiv.innerHTML = `
+                        <div class="from">
+                            <div class="user" style="height: 54px;">
+                                <img src="images/robot.png">
+                            </div>
+                            <div style="width: 100%; background: transparent;">
+                                <div id="iframeContainer" style="height: auto; width: 100%; background: transparent;">
+                                    <iframe src="${data.embedUrl}" width="100%" height="300px" frameBorder="0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    messagesContainer.appendChild(aiMessageDiv); // Add AI response to the chat
+                } else {
+                    console.error(data.error); // Handle error
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
 
 
 </script>
