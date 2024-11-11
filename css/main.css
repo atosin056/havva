@@ -64,7 +64,7 @@
 	border-radius: 20px;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background: url(../images/Noise.png);
+	background: url(../images/Noise.webp);
 	backdrop-filter: blur(34.97631072998047px);
 	padding: 16px 16px 16px 24px;
 	flex: 1 1 calc(33.333% - 20px);

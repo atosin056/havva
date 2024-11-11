@@ -438,7 +438,7 @@ $time = "20hrs 30mins";
 							
 						</div>
 
-							<div style="display: flex; flex-direction: column;padding-top: 150px; align-items: center; gap: 30px; height: 100%;background: transparent;width: 100% !important;">
+							<div style="display: flex; flex-direction: column;padding-top: 100px; align-items: center; gap: 30px; height: 100%;background: transparent;width: 100% !important;">
 						   
 							    <!-- The Welcome big text -->
 							   
@@ -482,7 +482,7 @@ $time = "20hrs 30mins";
 
 							    <!-- The real chat -->
 							   
-							    <div id="chatBody" style="width: 100%; background: transparent; height: 30%; overflow-y: auto; display: none;">
+							    <div id="chatBody" style="width: 100%; background: transparent; height: 50%; overflow-y: auto; display: none;">
 							   
 							        <div style="background: transparent; width: 100%;" class="chat-body">
 							   
@@ -868,68 +868,136 @@ function typewriterEffect(element, speed = 60) {
 // });
 
 document.getElementById('messageForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent default form submission
+    e.preventDefault(); // Prevent default form submission
 
-            const messageInput = this.message.value; // Get the message from input
-            const messagesContainer = document.getElementById('messagesContainer');
+    const messageInput = this.message.value; // Get the message from input
+    const messagesContainer = document.getElementById('messagesContainer');
 
-            // Hide intro message and show chat body if not already done
-            if (document.getElementById('introMessage').style.display !== 'none') {
-                document.getElementById('introMessage').style.display = 'none';
-                document.getElementById('chatBody').style.display = 'block';
+    // Hide intro message and show chat body if not already done
+    const introMessage = document.getElementById('introMessage');
+    if (introMessage && introMessage.style.display !== 'none') {
+        introMessage.style.display = 'none';
+        document.getElementById('chatBody').style.display = 'block';
+    }
+
+    // Create a new message entry for the user's message
+    const userMessageDiv = document.createElement('div');
+    userMessageDiv.style.display = 'flex';
+    userMessageDiv.style.justifyContent = 'flex-end';
+    userMessageDiv.innerHTML = `
+        <div class="to">
+            <div class="user" style="height: 54px;">
+                <img src="images/user.webp">
+            </div>
+            <div class="tomessage">${messageInput}</div>
+        </div>
+    `;
+    messagesContainer.appendChild(userMessageDiv); // Add user's message to the chat
+
+    // Clear the input field
+    this.message.value = '';
+
+  // Create a loading indicator for the AI response
+const loadingMessageDiv = document.createElement('div');
+loadingMessageDiv.style.display = 'flex';
+loadingMessageDiv.style.justifyContent = 'flex-start';
+loadingMessageDiv.innerHTML = `
+    <div class="from">
+        <div class="user" style="height: 54px;">
+            <img src="images/robot.webp">
+        </div>
+        <div style="width: 100%; background: transparent;">
+            <div id="loadingIndicator" style="margin-top: 30px;">
+                <img src="images/loader.gif" alt="Loading..." style="width: 50px; height: 50px;">
+            </div>
+        </div>
+    </div>
+`;
+
+    messagesContainer.appendChild(loadingMessageDiv); // Show loading indicator
+
+    // Send requests to both endpoints concurrently
+    Promise.all([
+        // Request to the ai.php (YouTube API)
+        fetch('ai.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'message=' + encodeURIComponent(messageInput) // Send the message
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the YouTube response (embedUrl)
+            if (data.embedUrl) {
+                const iframe = `<iframe src="${data.embedUrl}" width="100%" height="300px" frameBorder="0" allowfullscreen></iframe>`;
+                return iframe;
             }
+            return ''; // Return empty string if no embedUrl
+        }),
 
-            // Create a new message entry for the user's message
-            const userMessageDiv = document.createElement('div');
-            userMessageDiv.style.display = 'flex';
-            userMessageDiv.style.justifyContent = 'flex-end';
-            userMessageDiv.innerHTML = `
-                <div class="to">
-                    <div class="user" style="height: 54px;">
-                        <img src="images/user.webp">
-                    </div>
-                    <div class="tomessage">${messageInput}</div>
+        // Request to the chatbot API
+        fetch('https://havva.onrender.com/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Set the content type to JSON
+            },
+            body: JSON.stringify({ message: messageInput }) // Send the message as part of the request body
+        })
+        .then(response => response.json()) // Parse the JSON response
+        .then(data => {
+            // Handle the bot response (text response)
+            return data.output || 'No response from bot';
+        })
+    ])
+    .then(([embedIframe, botResponse]) => {
+        // Remove the loading indicator
+        loadingMessageDiv.remove();
+
+        // Replace * ** with <strong> tags for bold text
+        botResponse = botResponse.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // For triple asterisk (***) bold
+        botResponse = botResponse.replace(/\*(.*?)\*/g, '<strong>$1</strong>'); // For single asterisk (*) bold
+
+        // Replace line breaks (\n) with <br> tags
+        botResponse = botResponse.replace(/\n/g, '<br>');
+
+        // Create a new message entry for the AI response (bot's message)
+        const aiMessageDiv = document.createElement('div');
+        aiMessageDiv.style.display = 'flex';
+        aiMessageDiv.style.justifyContent = 'flex-start';
+        aiMessageDiv.innerHTML = `
+            <div class="from">
+                <div class="user" style="height: 54px;">
+                    <img src="images/robot.webp">
                 </div>
-            `;
-            messagesContainer.appendChild(userMessageDiv); // Add user's message to the chat
-
-            // Clear the input field
-            this.message.value = '';
-
-            // Send AJAX request to ai.php
-            fetch('ai.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'message=' + encodeURIComponent(messageInput) // Send the message
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.embedUrl) {
-                    // Create a new message entry for the AI response
-                    const aiMessageDiv = document.createElement('div');
-                    aiMessageDiv.style.display = 'flex';
-                    aiMessageDiv.style.justifyContent = 'flex-start';
-                    aiMessageDiv.innerHTML = `
-                        <div class="from">
-                            <div class="user" style="height: 54px;">
-                                <img src="images/robot.webp">
-                            </div>
-                            <div style="width: 100%; background: transparent;">
-                                <div id="iframeContainer" style="height: auto; width: 100%; background: transparent;">
-                                    <iframe src="${data.embedUrl}" width="100%" height="300px" frameBorder="0" allowfullscreen></iframe>
-                                </div>
-                            </div>
+                <div style="width: 100%; background: transparent;">
+                    <div id="iframeContainer" style="height: auto; width: 100%; background: transparent;">
+                        ${embedIframe} <!-- Embed YouTube iframe if available -->
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <div>
+                            <p style="line-height: 30px; font-size: 14px; color: grey;" id="botResponseText">${botResponse}</p>
                         </div>
-                    `;
-                    messagesContainer.appendChild(aiMessageDiv); // Add AI response to the chat
-                } else {
-                    console.error(data.error); // Handle error
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        });
+                    </div>
+                </div>
+            </div>
+        `;
+        console.log("YouTube embed:", embedIframe);
+console.log("Bot response:", botResponse);
+
+        messagesContainer.appendChild(aiMessageDiv); // Add AI response to the chat
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        loadingMessageDiv.remove(); // Remove loading indicator if there's an error
+        const errorMessageDiv = document.createElement('div');
+        errorMessageDiv.className = 'error';
+        errorMessageDiv.innerHTML = `<p>There was an error processing your request. Please try again later.</p>`;
+        messagesContainer.appendChild(errorMessageDiv); // Display an error message in the chat
+    });
+});
+
+
 
 
 </script>
