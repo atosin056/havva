@@ -4,6 +4,10 @@
 	font-family: poppins !important;
 }
 
+body{
+	scroll-behavior: smooth !important;
+}
+
 .robo-cont {
 	width: 100% !important;
 	height: 100vh !important;

@@ -1,7 +1,29 @@
 <?php
-// Set your time variable dynamically
+
 $time = "20hrs 30mins"; 
-// Replace this with a variable or data from your database
+
+if (!isset($_COOKIE['user_id'])) {
+
+    // Generate a random user_id or retrieve it from your database/session.
+
+    $user_id = rand(1000, 9999); // Example: Random user ID for demonstration.
+
+	$years = 10; // Number of years until the cookie expires
+	
+	$expirationTime = time() + (60 * 60 * 24 * 365 * $years); 
+
+    setcookie('user_id', $user_id, $expirationTime, '/');
+}
+
+else {
+
+    // If the user_id is already stored in the cookie, retrieve it
+
+    $user_id = $_COOKIE['user_id'];
+
+}
+
+
 
 ?>
 <html>
@@ -237,7 +259,7 @@ $time = "20hrs 30mins";
 
 										<div style="display: flex;align-items: center;gap: 10px;position: relative;">
 
-											<canvas id="progressChart" width="10" height="10"></canvas>
+											<canvas id="progressChart" width="6" height="6"></canvas>
 
 											<div id="progressText">Loading...</div>
 
@@ -642,22 +664,7 @@ $time = "20hrs 30mins";
 
 <script>
 	
-	window.addEventListener('load', function() {
-    // After 3 seconds, fade out the splash screen
-    setTimeout(function() {
-        const splashScreen = document.getElementById('splash-screen');
-        const mainContent = document.getElementById('main-content');
-
-        // Fade out the splash screen
-        splashScreen.style.opacity = 0;
-
-        // Fade in the main content
-        setTimeout(function() {
-            splashScreen.style.display = 'none';
-            mainContent.style.opacity = 1;
-        }, 100); // Wait for 2 seconds for the fade out to complete
-    }, 1500); // 3 seconds before the fade-out starts
-});
+	
 
 
 
@@ -734,138 +741,6 @@ function typewriterEffect(element, speed = 60) {
     type();
 }
 
-// const introMessage = document.getElementById('introMessage');
-// const chatBody = document.getElementById('chatBody');
-// const messageForm = document.getElementById('messageForm');
-
-// // Listen for the form submission
-// messageForm.addEventListener('submit', function(event) {
-//     event.preventDefault(); // Prevent the form from submitting
-
-//     // Hide the intro message and show the chat body
-//     introMessage.style.display = 'none';
-//     chatBody.style.display = 'block';
-
-//     // Get the user message from the input field
-//     const messageInput = document.querySelector('.message-input');
-//     const userMessage = messageInput.value;
-
-//     // Add user message to chat
-//     if (userMessage) {
-//         // Create a new outer div for the user message
-//         const messageContainer = document.createElement('div');
-//         messageContainer.style.width = '100%';
-//         messageContainer.style.display = 'flex';
-//         messageContainer.style.justifyContent = 'flex-end'; // Align to the right
-
-//         // Create the .to div for the user's message
-//         const toDiv = document.createElement('div');
-//         toDiv.classList.add('to');
-
-//         // Create the user div
-//         const userDiv = document.createElement('div');
-//         userDiv.classList.add('user');
-//         userDiv.style.height = '54px';
-
-//         // Add user image
-//         const userImage = document.createElement('img');
-//         userImage.src = 'images/user.webp';
-//         userDiv.appendChild(userImage);
-
-//         // Create the .tomessage div
-//         const tomessageDiv = document.createElement('div');
-//         tomessageDiv.classList.add('tomessage');
-
-//         // Create a new div for the user's message
-//         const userMessageElement = document.createElement('div');
-//         userMessageElement.textContent = userMessage; // Set the message text
-//         userMessageElement.classList.add('user-message');
-
-//         // Append the user message to the tomessage div
-//         tomessageDiv.appendChild(userMessageElement);
-
-//         // Append tomessage div to the to div
-//         toDiv.appendChild(userDiv);
-//         toDiv.appendChild(tomessageDiv);
-
-//         // Append the entire message container to the chat body
-//         messageContainer.appendChild(toDiv);
-//         chatBody.appendChild(messageContainer);
-
-//         // Clear the input field after appending the message
-//         messageInput.value = '';
-
-//         // Now make an AJAX request to ai.php
-//         fetch('ai.php', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/x-www-form-urlencoded',
-//             },
-//             body: `message=${encodeURIComponent(userMessage)}`
-//         })
-//         .then(response => response.json())
-//         .then(data => {
-//             // Create a new outer div for the bot's response
-//             const botResponseContainer = document.createElement('div');
-//             botResponseContainer.style.width = '100%';
-//             botResponseContainer.style.display = 'flex';
-//             botResponseContainer.style.justifyContent = 'flex-start'; // Align to the left
-
-//             // Create the .from div for the bot's response
-//             const fromDiv = document.createElement('div');
-//             fromDiv.classList.add('from');
-
-//             // Create the .user div for the bot
-//             const botUserDiv = document.createElement('div');
-//             botUserDiv.classList.add('user');
-//             botUserDiv.style.height = '54px';
-
-//             // Add bot image
-//             const botImage = document.createElement('img');
-//             botImage.src = 'images/robot.webp';
-//             botUserDiv.appendChild(botImage);
-
-//             // Main container for bot message
-//             const botMessageContainer = document.createElement('div');
-//             botMessageContainer.style.width = '100%';
-
-//             // Final container where iframe will be inserted
-//             const iframeContainer = document.createElement('div');
-//             iframeContainer.style.width = '100%';
-//             iframeContainer.style.height = '50vh';
-
-//             if (data.videoUrl) {
-//                 // Extract video ID from the URL to create the iframe
-//                 const videoId = data.videoUrl.split('v=')[1];
-//                 const iframe = document.createElement('iframe');
-//                 iframe.width = '100%';
-//                 iframe.height = '100%';
-//                 iframe.src = `https://www.youtube.com/embed/${videoId}`;
-//                 iframe.frameBorder = '0';
-//                 iframe.allowFullscreen = true;
-
-//                 // Append the iframe to the bot's specified div
-//                 iframeContainer.appendChild(iframe);
-//             } else if (data.error) {
-//                 const errorMessage = document.createElement('div');
-//                 errorMessage.textContent = data.error; // Display the error
-//                 iframeContainer.appendChild(errorMessage);
-//             } else {
-//                 const defaultTextDiv = document.createElement('div');
-//                 defaultTextDiv.textContent = 'Havva AI'; // Set the default text
-//                 iframeContainer.appendChild(defaultTextDiv);
-//             }
-
-//             // Nest the containers
-//             botMessageContainer.appendChild(iframeContainer);
-//             fromDiv.appendChild(botUserDiv);
-//             fromDiv.appendChild(botMessageContainer);
-//             botResponseContainer.appendChild(fromDiv);
-//             chatBody.appendChild(botResponseContainer);
-//         })
-//         .catch(error => console.error("Fetch Error:", error));
-//     }
-// });
 
 document.getElementById('messageForm').addEventListener('submit', function(e) {
     e.preventDefault(); // Prevent default form submission
@@ -897,24 +772,35 @@ document.getElementById('messageForm').addEventListener('submit', function(e) {
     // Clear the input field
     this.message.value = '';
 
-  // Create a loading indicator for the AI response
-const loadingMessageDiv = document.createElement('div');
-loadingMessageDiv.style.display = 'flex';
-loadingMessageDiv.style.justifyContent = 'flex-start';
-loadingMessageDiv.innerHTML = `
-    <div class="from">
-        <div class="user" style="height: 54px;">
-            <img src="images/robot.webp">
-        </div>
-        <div style="width: 100%; background: transparent;">
-            <div id="loadingIndicator" style="margin-top: 30px;">
-                <img src="images/loader.gif" alt="Loading..." style="width: 50px; height: 50px;">
+    // Create a loading indicator for the AI response
+    const loadingMessageDiv = document.createElement('div');
+    loadingMessageDiv.style.display = 'flex';
+    loadingMessageDiv.style.justifyContent = 'flex-start';
+    loadingMessageDiv.innerHTML = `
+        <div class="from">
+            <div class="user" style="height: 54px;">
+                <img src="images/robot.webp">
+            </div>
+            <div style="width: 100%; background: transparent;">
+                <div id="loadingIndicator" style="margin-top: 30px;">
+                    <img src="images/loader.gif" alt="Loading..." style="width: 50px; height: 50px;">
+                </div>
             </div>
         </div>
-    </div>
-`;
-
+    `;
     messagesContainer.appendChild(loadingMessageDiv); // Show loading indicator
+
+    // Prepare payload for chatbot request with user_id from PHP
+    const userId = <?php echo json_encode($user_id); ?>; // Access PHP-generated user_id
+    if (!userId) {
+        alert('User ID is missing.');
+        return; // If user_id is missing, prevent further action
+    }
+
+    const payload = {
+        user_id: userId,  // User ID from PHP
+        message: messageInput  // Message input from the form
+    };
 
     // Send requests to both endpoints concurrently
     Promise.all([
@@ -933,16 +819,18 @@ loadingMessageDiv.innerHTML = `
                 const iframe = `<iframe src="${data.embedUrl}" width="100%" height="300px" frameBorder="0" allowfullscreen></iframe>`;
                 return iframe;
             }
-            return ''; // Return empty string if no embedUrl
+
+            return '';
+
         }),
 
         // Request to the chatbot API
         fetch('https://havva.onrender.com/api/chat', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json', // Set the content type to JSON
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ message: messageInput }) // Send the message as part of the request body
+            body: JSON.stringify(payload) // Send the message and user_id as JSON
         })
         .then(response => response.json()) // Parse the JSON response
         .then(data => {
@@ -954,9 +842,9 @@ loadingMessageDiv.innerHTML = `
         // Remove the loading indicator
         loadingMessageDiv.remove();
 
-        // Replace * ** with <strong> tags for bold text
-        botResponse = botResponse.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // For triple asterisk (***) bold
-        botResponse = botResponse.replace(/\*(.*?)\*/g, '<strong>$1</strong>'); // For single asterisk (*) bold
+        // Replace ** and * with <strong> tags for bold text
+        botResponse = botResponse.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // For **bold**
+        botResponse = botResponse.replace(/\*(.*?)\*/g, '<strong>$1</strong>'); // For *bold*
 
         // Replace line breaks (\n) with <br> tags
         botResponse = botResponse.replace(/\n/g, '<br>');
@@ -983,7 +871,7 @@ loadingMessageDiv.innerHTML = `
             </div>
         `;
         console.log("YouTube embed:", embedIframe);
-console.log("Bot response:", botResponse);
+        console.log("Bot response:", botResponse);
 
         messagesContainer.appendChild(aiMessageDiv); // Add AI response to the chat
     })
@@ -998,8 +886,26 @@ console.log("Bot response:", botResponse);
 });
 
 
+window.addEventListener('load', function() {
+    // After 3 seconds, fade out the splash screen
+    setTimeout(function() {
+        const splashScreen = document.getElementById('splash-screen');
+        const mainContent = document.getElementById('main-content');
+
+        // Fade out the splash screen
+        splashScreen.style.opacity = 0;
+
+        // Fade in the main content
+        setTimeout(function() {
+            splashScreen.style.display = 'none';
+            mainContent.style.opacity = 1;
+        }, 100); // Wait for 2 seconds for the fade out to complete
+    }, 1500); // 3 seconds before the fade-out starts
+});
 
 
 </script>
+
+<script type="text/javascript" src="js/main.js"></script>
 
 </html>
