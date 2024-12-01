@@ -244,12 +244,12 @@ font-feature-settings: 'liga' off, 'clig' off;
 	display: none;
 }*/
 
-#yes{
+.yes{
 	font-weight: 600 !important;
 	cursor: pointer !important;
 }
 
-#no{
+.no{
 	font-weight: 600 !important;
 	cursor: pointer !important;
 }

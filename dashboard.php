@@ -665,13 +665,26 @@ else {
 <script>
 	
 function showIframe() {
-	console.log("Done");
-    document.getElementById('iframeContainer').style.display = 'block'; // Show iframe
+    console.log("Done");
+    // Select all elements with class 'iframeContainer'
+    const iframes = document.querySelectorAll('.iframeContainer');
+    
+    // Loop through each iframe and set display to 'block'
+    iframes.forEach(iframe => {
+        iframe.style.display = 'block';
+    });
 }
 
 function hideIframe() {
-    document.getElementById('iframeContainer').style.display = 'none'; // Hide iframe
-}	
+    // Select all elements with class 'iframeContainer'
+    const iframes = document.querySelectorAll('.iframeContainer');
+    
+    // Loop through each iframe and set display to 'none'
+    iframes.forEach(iframe => {
+        iframe.style.display = 'none';
+    });
+}
+	
 
 
 
@@ -870,10 +883,10 @@ document.getElementById('messageForm').addEventListener('submit', function(e) {
                 <div style="width: 100%; background: transparent;">
                 	<div style="margin-top: 0px;">
                         <div>
-                            <p style="line-height: 30px; font-size: 14px; color: grey;" id="botResponseText">${botResponse}<br>Would you like a video <font id="yes" onclick="showIframe()">Yes</font> or <font id="no" onclick="hideIframe()">No</font></p>
+                            <p style="line-height: 30px; font-size: 14px; color: grey;" id="botResponseText">${botResponse}<br>Would you like a video <font class="yes" onclick="showIframe()">Yes</font> or <font class="no" onclick="hideIframe()">No</font></p>
                         </div>
                     </div>
-                    <div id="iframeContainer" style="height: auto; width: 100%; background: transparent;display: none;">
+                    <div class="iframeContainer" style="height: auto; width: 100%; background: transparent;display: none;">
                         ${embedIframe} <!-- Embed YouTube iframe if available -->
                     </div>
                     
