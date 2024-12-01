@@ -664,7 +664,14 @@ else {
 
 <script>
 	
-	
+function showIframe() {
+	console.log("Done");
+    document.getElementById('iframeContainer').style.display = 'block'; // Show iframe
+}
+
+function hideIframe() {
+    document.getElementById('iframeContainer').style.display = 'none'; // Hide iframe
+}	
 
 
 
@@ -742,6 +749,8 @@ function typewriterEffect(element, speed = 60) {
 }
 
 
+
+
 document.getElementById('messageForm').addEventListener('submit', function(e) {
     e.preventDefault(); // Prevent default form submission
 
@@ -782,7 +791,7 @@ document.getElementById('messageForm').addEventListener('submit', function(e) {
                 <img src="images/robot.webp">
             </div>
             <div style="width: 100%; background: transparent;">
-                <div id="loadingIndicator" style="margin-top: 30px;">
+                <div id="loadingIndicator" style="margin-top: 15px;">
                     <img src="images/loader.gif" alt="Loading..." style="width: 50px; height: 50px;">
                 </div>
             </div>
@@ -859,17 +868,21 @@ document.getElementById('messageForm').addEventListener('submit', function(e) {
                     <img src="images/robot.webp">
                 </div>
                 <div style="width: 100%; background: transparent;">
-                    <div id="iframeContainer" style="height: auto; width: 100%; background: transparent;">
-                        ${embedIframe} <!-- Embed YouTube iframe if available -->
-                    </div>
-                    <div style="margin-top: 30px;">
+                	<div style="margin-top: 0px;">
                         <div>
-                            <p style="line-height: 30px; font-size: 14px; color: grey;" id="botResponseText">${botResponse}</p>
+                            <p style="line-height: 30px; font-size: 14px; color: grey;" id="botResponseText">${botResponse}<br>Would you like a video <font id="yes" onclick="showIframe()">Yes</font> or <font id="no" onclick="hideIframe()">No</font></p>
                         </div>
                     </div>
+                    <div id="iframeContainer" style="height: auto; width: 100%; background: transparent;display: none;">
+                        ${embedIframe} <!-- Embed YouTube iframe if available -->
+                    </div>
+                    
                 </div>
             </div>
         `;
+
+
+
         console.log("YouTube embed:", embedIframe);
         console.log("Bot response:", botResponse);
 

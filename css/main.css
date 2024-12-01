@@ -240,6 +240,20 @@ font-feature-settings: 'liga' off, 'clig' off;
 	display: inline-block;
 }
 
+/*#iframeContainer{
+	display: none;
+}*/
+
+#yes{
+	font-weight: 600 !important;
+	cursor: pointer !important;
+}
+
+#no{
+	font-weight: 600 !important;
+	cursor: pointer !important;
+}
+
 .to{
 	margin-top: 10px;
 	display: inline-flex;
@@ -253,7 +267,7 @@ font-feature-settings: 'liga' off, 'clig' off;
 	display: flex;
 	height: auto;
 	gap: 10px;
-	width: 80% !important;
+	width: 50% !important;
 }
 
 #chatBody{
