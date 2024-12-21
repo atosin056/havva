@@ -1,4 +1,4 @@
-<html>
+<html lang="eng">
 
 <head>
 
@@ -30,11 +30,11 @@
 	
 		<!-- <div>
 			
-			<img src="images/greenlogo.webp" style="width: 100px;">
+			<img alt="alternative_text" src="images/greenlogo.webp" style="width: 100px;">
 
 		</div> -->
 
-		<img src="images/roll.gif">
+		<img alt="alternative_text" src="images/roll.gif">
 
 	</div>
 
@@ -84,7 +84,7 @@
 
 				<div style="margin-top: 70px;">
 					
-					<img src="images/sleep.webp" style="width: 100% !!important;">
+					<img alt="alternative_text" src="images/sleep.webp" style="width: 100% !!important;">
 
 				</div>
 
@@ -96,7 +96,7 @@
 					
 					<div>
 						
-						<img src="images/pulse.webp" style="width: 100% !important;">
+						<img alt="alternative_text" src="images/pulse.webp" style="width: 100% !important;">
 
 					</div>
 
@@ -104,13 +104,13 @@
 						
 						<div>
 							
-							<img src="images/temp.webp" style="flex: 1 1 calc(33.333% - 20px);">
+							<img alt="alternative_text" src="images/temp.webp" style="flex: 1 1 calc(33.333% - 20px);">
 
 						</div>
 
 						<div style="flex-grow: 1;">
 							
-							<img src="images/pressure.webp" style="flex: 1 1 calc(33.333% - 20px);width: 100% !important;height: 100% !important;">
+							<img alt="alternative_text" src="images/pressure.webp" style="flex: 1 1 calc(33.333% - 20px);width: 100% !important;height: 100% !important;">
 
 						</div>
 
@@ -152,7 +152,7 @@
 						
 						<div>
 							
-							<img src="images/diagnostics.webp" style="width: 100% !important;">
+							<img alt="alternative_text" src="images/diagnostics.webp" style="width: 100% !important;">
 
 						</div>
 
@@ -170,7 +170,7 @@
 						
 						<div>
 							
-							<img src="images/diagnostics.webp" style="width: 100% !important;">
+							<img alt="alternative_text" src="images/diagnostics.webp" style="width: 100% !important;">
 
 						</div>
 
@@ -188,7 +188,7 @@
 						
 						<div>
 							
-							<img src="images/diagnostics.webp" style="width: 100% !important;">
+							<img alt="alternative_text" src="images/diagnostics.webp" style="width: 100% !important;">
 
 						</div>
 
@@ -206,7 +206,7 @@
 						
 						<div>
 							
-							<img src="images/diagnostics.webp" style="width: 100% !important;">
+							<img alt="alternative_text" src="images/diagnostics.webp" style="width: 100% !important;">
 
 						</div>
 
@@ -240,7 +240,7 @@
 				
 				<div class="overview">
 					
-					<img src="images/3d.webp">
+					<img alt="alternative_text" src="images/3d.webp">
 
 				</div>
 
@@ -366,7 +366,7 @@
 				
 				<div>
 					
-					<img src="images/mesh1.webp" style="width: 100% !important;">
+					<img alt="alternative_text" src="images/mesh1.webp" style="width: 100% !important;">
 
 				</div>
 
@@ -394,7 +394,7 @@
 				
 				<div>
 					
-					<img src="images/mesh2.webp" style="width: 100% !important;height: 85% !important;">
+					<img alt="alternative_text" src="images/mesh2.webp" style="width: 100% !important;height: 85% !important;">
 
 				</div>
 
@@ -422,7 +422,7 @@
 				
 				<div>
 					
-					<img src="images/mesh3.webp" style="width: 100% !important;">
+					<img alt="alternative_text" src="images/mesh3.webp" style="width: 100% !important;">
 
 				</div>
 
@@ -565,7 +565,7 @@
 
 			<div class="col-lg-7 col-md-7 col-sm-7" style="display: flex;justify-content: flex-end;">
 				
-				<img src="images/phone.webp" style="width: 100% !important;">
+				<img alt="alternative_text" src="images/phone.webp" style="width: 100% !important;">
 
 			</div>
 
@@ -604,7 +604,7 @@
 							
 							<div>
 								
-								<img src="images/icon.webp">
+								<img alt="alternative_text" src="images/icon.webp">
 
 							</div>
 
@@ -732,7 +732,7 @@
 
 				<div class="col-lg-6 col-sm-6 col-md-6 deep">
 					
-					<img src="images/diamonds.webp" style="width: 100% !important;height: 100% !important;">
+					<img alt="alternative_text" src="images/diamonds.webp" style="width: 100% !important;height: 100% !important;">
 
 				</div>
 
@@ -754,7 +754,7 @@
 				
 				<div style="display: inline-block;width: auto;background: transparent;">
 					
-					<img src="images/foot.webp">
+					<img alt="alternative_text" src="images/foot.webp">
 
 				</div>
 
@@ -762,13 +762,13 @@
 					
 					<div style="width: 204px;">
 						
-						<img src="images/applestore.webp" style="width: 100% !important;">
+						<img alt="alternative_text" src="images/applestore.webp" style="width: 100% !important;">
 
 					</div>
 
 					<div style="width: 204px;">
 						
-						<img src="images/playstore.webp" style="width: 100% !important;">
+						<img alt="alternative_text" src="images/playstore.webp" style="width: 100% !important;">
 
 					</div>
 

@@ -882,6 +882,64 @@ input:not(:placeholder-shown)+label {
 	margin-left: 20px;
 }
 
+.goog{
+	background: #222222;
+	height: 45px !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px !important;
+	color: white;
+	gap: 8px;
+	border: 1px solid #343434;
+}
+
+.submi{
+	background: white;
+	height: 45px !important;
+	border-radius: 8px !important;
+	border: none !important;
+	font-size: 12px !important;
+	color: black;
+	font-weight: 600;
+}
+
+.log-in{
+	font-size: 24px !important;
+	font-weight: 700 !important;
+	text-align: center;
+}
+
+.forgot-p{
+	color: #5F5F5F;
+	font-size: 12px !important;
+	width: 100% !important;
+	display: flex;
+	justify-content: flex-end;
+	transition-duration: 600ms;
+}
+
+.forgot-p:hover{
+	color: white !important;
+}
+
+.input{
+	background: #2B2B2B;
+	border: none !important;
+	height: 45px !important;
+	color: white !important;
+	font-size: 12px !important;
+}
+
+.input::placeholder{
+	color: #585858 !important;
+	font-weight: 600;
+}
+
+.input:focus{
+	background: #2B2B2B !important;
+}
+
 input:focus+label {
 	background: white;
 	height: 20px;
@@ -963,6 +1021,8 @@ a {
 	transition: opacity 2s ease;
 }
 
+
+
 .content {
 	display: none;
 }
@@ -976,6 +1036,50 @@ a {
 @media (max-width: 992px) {}
 
 @media (max-width: 768px) {
+	.to{
+	max-width: 80% !important;
+}
+.from{
+	width: 100% !important;
+}
+	.pack{
+		display: none !important;
+	}
+	#robo-cont{
+		width: 100% !important;
+		background: yellow !important;
+	}
+	#introMessage{
+		width: 100% !important;
+		display: flex;
+		justify-content: center !important;
+		align-items: center !important;
+	}
+	.hi{
+	font-size: 23px !important;
+	}
+	.nope{
+		padding: 20px 50px !important;
+	}
+	.sunrise{
+		display: none;
+	}
+	.nav{
+		border-radius: 0px !important;
+		margin: 0 !important;
+		width: 100% !important;
+		bottom: 0 !important;
+	}
+	#home{
+		padding-bottom: 100px !important;
+	}
+	.holdy{
+		flex-direction: column !important;
+		gap: 30px !important;
+	}
+	.monkey{
+		padding-left: 0px !important;
+	}
 	.header-text {
 		font-size: 40px;
 	}

@@ -26,7 +26,7 @@ else {
 
 
 ?>
-<html>
+<html lang="eng">
 
 <head>
 
@@ -60,7 +60,7 @@ else {
 
 	<div>
 
-		<img src="images/roll.gif">
+		<img alt="alternative" src="images/roll.gif">
 
 	</div>
 
@@ -76,32 +76,32 @@ else {
 		        
 		        <div class="act acti" data-target="home" title="Home">
 		
-		            <img src="images/House.webp">
+		            <img alt="alternative" src="images/House.webp">
 		
 		        </div>
 
 		        <div class="act" data-target="circle">
 		
-		            <img src="images/circle.svg">
+		            <img alt="alternative" src="images/circle.svg">
 		
 		        </div>
 
 		
 		        <div class="act" data-target="robot" title="MedicBot">
 		
-		            <img src="images/robot.webp">
+		            <img alt="alternative" src="images/robot.webp">
 		
 		        </div>
 
 		        <div class="act" data-target="user">
 		
-		            <img src="images/user.webp">
+		            <img alt="alternative" src="images/user.webp">
 		
 		        </div>
 
 		        <div class="act" data-target="gear">
 		
-		            <img src="images/gear.webp">
+		            <img alt="alternative" src="images/gear.webp">
 		
 		        </div>  
 
@@ -111,7 +111,7 @@ else {
 		
 		<div class="content" id="home" style="gap: 20px;background: transparent;display: flex !important;">
 
-			<div class="row">
+			<div class="row holdy" style="background: transparent;">
 				
 				<div class="col-lg-5 col-sm-5 col-md-5" style="background: transparent;padding-top: 30px;padding-top: 58px;">
 					
@@ -145,7 +145,7 @@ else {
 											
 											<div style="display: inline-block;width: auto;">
 												
-												<img src="images/dash.webp">
+												<img alt="alternative" src="images/dash.webp">
 
 											</div>
 
@@ -169,7 +169,7 @@ else {
 											
 											<div style="display: inline-block;width: auto;">
 												
-												<img src="images/dash.webp">
+												<img alt="alternative" src="images/dash.webp">
 
 											</div>
 
@@ -197,7 +197,7 @@ else {
 
 				<!-- End -->
 
-				<div style="background: transparent;padding-left: 30px;" class="col-lg-7 col-sm-7 col-md-7">
+				<div style="background: transparent;padding-left: 30px;" class="col-lg-7 col-sm-7 col-md-7 monkey">
 					
 					<div style="background: transparent;">
 						
@@ -211,7 +211,7 @@ else {
 										
 										<div class="img-cont">
 											
-											<img src="images/heart.webp">
+											<img alt="alternative" src="images/heart.webp">
 
 										</div>
 
@@ -243,7 +243,7 @@ else {
 
 										<div class="img-cont">
 
-											<img src="images/moonn.webp">
+											<img alt="alternative" src="images/moonn.webp">
 
 										</div>
 
@@ -364,7 +364,7 @@ else {
 
 										<div class="img-cont">
 
-											<img src="images/tempa.webp">
+											<img alt="alternative" src="images/tempa.webp">
 
 										</div>
 
@@ -396,7 +396,7 @@ else {
 
 										<div class="img-cont">
 
-											<img src="images/bp.webp">
+											<img alt="alternative" src="images/bp.webp">
 
 										</div>
 
@@ -446,7 +446,7 @@ else {
 								
 								<div>
 									
-									<img src="images/greenlogo.webp">
+									<img alt="alternative" src="images/greenlogo.webp">
 
 								</div>
 
@@ -468,31 +468,31 @@ else {
 							   
 							        <h4 class="hi typewriter-text">Hi there! Got any health questions or need guidance on a medical issue? I’m here to help!</h4>
 
-							        <div style="display: flex;width: 100% !important;margin-top: 15px;">
+							        <div style="display: flex;width: 100% !important;margin-top: 15px;" class="pack">
 									
 										<div class="row" style="padding-left: 0 !important;flex-wrap: nowrap;gap: 12px;">
 											
 											<div style="display: inline-block;width: auto;padding: 0 !important;">
 												
-												<img src="images/cut.webp">
+												<img alt="alternative" src="images/cut.webp">
 
 											</div>
 
 											<div style="display: inline-block;width: auto;padding: 0 !important;">
 												
-												<img src="images/dizzy.webp">
+												<img alt="alternative" src="images/dizzy.webp">
 
 											</div>
 
 											<div style="display: inline-block;width: auto;padding: 0 !important;">
 												
-												<img src="images/head.webp">
+												<img alt="alternative" src="images/head.webp">
 
 											</div>
 
 											<div style="display: inline-block;width: auto;padding: 0 !important;">
 												
-												<img src="images/anxious.webp">
+												<img alt="alternative" src="images/anxious.webp">
 
 											</div>
 
@@ -526,7 +526,7 @@ else {
 							   
 							                <button type="submit" name="submit" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none;">
 							   
-							                    <img src="images/send.webp" alt="Send" style="width: 40px; height: 40px;">
+							                    <img alt="alternative" src="images/send.webp" alt="Send" style="width: 40px; height: 40px;">
 							   
 							                </button>
 							   
@@ -552,7 +552,7 @@ else {
 
 		<!-- End of content for the CHATBOT -->
 
-		<div style="margin-top: 40px;padding-left: 120px;padding-right: 120px;">
+		<div style="margin-top: 40px;padding-left: 120px;padding-right: 120px;" class="sunrise">
 			
 			<div>
 				
@@ -578,7 +578,7 @@ else {
 
 							<div style="display: inline-block;width: auto;">
 								
-								<img src="images/health.webp">
+								<img alt="alternative" src="images/health.webp">
 
 							</div>
 
@@ -608,7 +608,7 @@ else {
 
 							<div style="display: inline-block;width: auto;">
 								
-								<img src="images/health.webp">
+								<img alt="alternative" src="images/health.webp">
 
 							</div>
 
@@ -638,7 +638,7 @@ else {
 
 							<div style="display: inline-block;width: auto;">
 								
-								<img src="images/health.webp">
+								<img alt="alternative" src="images/health.webp">
 
 							</div>
 
@@ -784,7 +784,7 @@ document.getElementById('messageForm').addEventListener('submit', function(e) {
     userMessageDiv.innerHTML = `
         <div class="to">
             <div class="user" style="height: 54px;">
-                <img src="images/user.webp">
+                <img alt="alternative" src="images/user.webp">
             </div>
             <div class="tomessage">${messageInput}</div>
         </div>
@@ -801,11 +801,11 @@ document.getElementById('messageForm').addEventListener('submit', function(e) {
     loadingMessageDiv.innerHTML = `
         <div class="from">
             <div class="user" style="height: 54px;">
-                <img src="images/robot.webp">
+                <img alt="alternative" src="images/robot.webp">
             </div>
             <div style="width: 100%; background: transparent;">
                 <div id="loadingIndicator" style="margin-top: 15px;">
-                    <img src="images/loader.gif" alt="Loading..." style="width: 50px; height: 50px;">
+                    <img alt="alternative" src="images/loader.gif" alt="Loading..." style="width: 50px; height: 50px;">
                 </div>
             </div>
         </div>
@@ -878,7 +878,7 @@ document.getElementById('messageForm').addEventListener('submit', function(e) {
         aiMessageDiv.innerHTML = `
             <div class="from">
                 <div class="user" style="height: 54px;">
-                    <img src="images/robot.webp">
+                    <img alt="alternative" src="images/robot.webp">
                 </div>
                 <div style="width: 100%; background: transparent;">
                 	<div style="margin-top: 0px;">
